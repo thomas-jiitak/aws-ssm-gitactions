@@ -44,6 +44,7 @@ jobs:
                     "git pull",
                     "sudo composer update",
                     "sudo php artisan cache:clear",
-                    "sudo php artisan route:clear"
+                    "sudo php artisan route:clear",
+                    "sudo mkdir -p /home/ssm-user/test",
                   ]' \
                   --region ${{ secrets.AWS_REGION }}
