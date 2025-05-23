@@ -34,17 +34,15 @@ jobs:
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 aws-region: ${{ secrets.AWS_REGION }}
 
-            - name: Execute Deployment Commands via SSM
-              run: |
-                aws ssm send-command \
-                  --document-name "AWS-RunShellScript" \
-                  --targets "Key=instanceids,Values=${{ secrets.INSTANCE_ID }}" \
-                  --parameters 'commands=[
-                    "cd /var/www/html",
-                    "git pull",
-                    "sudo composer update",
-                    "sudo php artisan cache:clear",
-                    "sudo php artisan route:clear",
-                    "sudo mkdir -p /home/ssm-user/test",
-                  ]' \
-                  --region ${{ secrets.AWS_REGION }}
+            - name: Run EC2 Command via AWS SSM
+              uses: thomasvjoseph/aws-ssm-send@v1.0.0-rc1
+              with:
+                instance-id: ${{ secrets.INSTANCE_ID }}
+                region: ${{ secrets.AWS_REGION }}
+                commands: |
+                    echo "Hello from GitHub Actions!"
+                    echo "Running on instance: ${{ secrets.INSTANCE_ID }}"
+                    echo "AWS Region: ${{ secrets.AWS_REGION }}"
+                    echo "GitHub Actions Workflow: ${{ github.workflow }}"
+                    echo "GitHub Actions Run ID: ${{ github.run_id }}"
+                    echo "GitHub Actions Actor: ${{ github.actor }}"
