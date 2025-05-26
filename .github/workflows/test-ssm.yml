@@ -44,8 +44,8 @@ jobs:
             - name: Run EC2 Command via AWS SSM
               uses: thomasvjoseph/aws-ssm-send@v1.0.0-rc3
               with:
-                instance-id: ${{ secrets.INSTANCE_ID }}
-                region: ${{ secrets.AWS_REGION}}
+                instance-id: i-0452647ec4ff50524
+                region: ap-southeast-1
                 commands: |
                     echo "Hello from GitHub Actions!"
                     echo "Running on instance: ${{ secrets.INSTANCE_ID }}"
