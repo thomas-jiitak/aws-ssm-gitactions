@@ -19,6 +19,9 @@ on:
             - main
     workflow_dispatch:
 
+env:
+    AWS_REGION: ${{ secrets.AWS_REGION }}
+
 jobs:
     deploy:
         name: Deploy via AWS SSM
@@ -36,7 +39,7 @@ jobs:
 
             - name: Debug region
               run: |
-               echo "AWS_REGION: ${{ secrets.AWS_REGION }}"
+               echo "AWS_REGION: {{ env.AWS_REGION }}"
 
             - name: Run EC2 Command via AWS SSM
               uses: thomasvjoseph/aws-ssm-send@v1.0.0-rc3
