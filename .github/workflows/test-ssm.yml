@@ -35,7 +35,7 @@ jobs:
                 aws-region: ${{ secrets.AWS_REGION }}
 
             - name: Run EC2 Command via AWS SSM
-              uses: thomasvjoseph/aws-ssm-send@v1.0.0-rc1
+              uses: thomasvjoseph/aws-ssm-send@v1.0.0.rc2
               with:
                 instance-id: ${{ secrets.INSTANCE_ID }}
                 region: ${{ secrets.AWS_REGION }}
