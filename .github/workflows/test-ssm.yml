@@ -49,4 +49,4 @@ jobs:
                 commands: |
                     echo "Creating a file..."
                     echo "Hello from GitHub Actions!" > /home/ec2-user/hello.txt
-                    cat /home/ssm-user/hello.txt
+                    cat /home/ec2-user/hello.txt
