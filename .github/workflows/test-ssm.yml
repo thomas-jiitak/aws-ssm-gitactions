@@ -47,9 +47,6 @@ jobs:
                 instance-id: i-0452647ec4ff50524
                 region: ap-southeast-1
                 commands: |
-                    echo "Hello from GitHub Actions!"
-                    echo "Running on instance: ${{ secrets.INSTANCE_ID }}"
-                    echo "AWS Region: ${{ secrets.AWS_REGION }}"
-                    echo "GitHub Actions Workflow: ${{ github.workflow }}"
-                    echo "GitHub Actions Run ID: ${{ github.run_id }}"
-                    echo "GitHub Actions Actor: ${{ github.actor }}"
+                    echo "Creating a file..."
+                    echo "Hello from GitHub Actions!" > /home/ec2-user/hello.txt
+                    cat /home/ssm-user/hello.txt
